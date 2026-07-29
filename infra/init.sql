@@ -2,7 +2,6 @@ CREATE EXTENSION IF NOT EXISTS vector;
 
 CREATE TABLE IF NOT EXISTS documents (
   id UUID PRIMARY KEY,
-  -- clerk_user_id instead of below
   user_id TEXT NOT NULL DEFAULT 'local-user',
   filename TEXT NOT NULL,
   content_type TEXT,
@@ -24,6 +23,7 @@ CREATE INDEX IF NOT EXISTS chunks_tsv_idx ON chunks USING gin (tsv);
 
 CREATE TABLE IF NOT EXISTS chat_messages (
   id UUID PRIMARY KEY,
+  user_id TEXT NOT NULL DEFAULT 'local-user'
   conversation_id TEXT NOT NULL,
   role TEXT NOT NULL,
   content TEXT NOT NULL,

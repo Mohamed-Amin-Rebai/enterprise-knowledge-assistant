@@ -26,17 +26,14 @@ services:
       db:
         condition: service_healthy
 
-  # web:
-  #   build: ./web
-  #   ports:
-  #     - "3000:3000"
-  #   volumes:
-  #     - ./web:/app
-  #     - /app/node_modules
-  #   environment:
-  #     NEXT_PUBLIC_API_URL: http://localhost:8000
-  #   depends_on:
-  #     - api
+  web:
+    build: ./web
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8000
+    depends_on:
+      - api
 
 volumes:
   pgdata:
